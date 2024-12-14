@@ -6,15 +6,12 @@ app.use(morgan('dev'))  // 3rd party middleware
 
 app.set("view engine",'ejs')
 
-app.use((req,res,next)=>{             // middleware
-    console.log("this is middleware")
-    const a=5
-    const b=10
+app.get('/',(req,res,next)=>{
+    const a = 5
+    const b = 10
     console.log(a+b)
-    return next()
-})
-
-app.get('/',(req,res)=>{
+    next()
+},(req,res)=>{
     res.render('index')
 })
 
